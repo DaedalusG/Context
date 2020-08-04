@@ -6,8 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     body: DataTypes.TEXT,
     userId: DataTypes.INTEGER
   }, {});
-  Article.associate = function(models) {
+  Article.associate = function (models) {
     // associations can be defined here
+    Article.belongsTo(models.User, { foreignKey: "userId" });
+    Article.hasMany(models.Comment, { foreignKey: "articleId" });
+    Article.hasMany(models.Like, { foreignKey: "articleId" });
   };
   return Article;
 };

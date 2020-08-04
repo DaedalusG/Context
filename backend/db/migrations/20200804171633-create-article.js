@@ -9,16 +9,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING(255),
       },
       topic: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING(255),
       },
       body: {
         type: Sequelize.TEXT
       },
       userId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        unique: true,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

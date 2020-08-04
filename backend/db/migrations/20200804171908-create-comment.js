@@ -9,16 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       body: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING(5000)
       },
       userId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        unique: true,
+        type: Sequelize.INTEGER,
+        references: { model: "Users" }
       },
       articleId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        unique: true,
+        type: Sequelize.INTEGER,
+        references: { model: "Articles" }
       },
       commentId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: "Comments" }
       },
       createdAt: {
         allowNull: false,
