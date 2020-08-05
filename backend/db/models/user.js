@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePicUrl: {
       type: DataTypes.STRING
+    },
+    tokenId: {
+      type: DataTypes.STRING
     }
   }, {});
   User.associate = function (models) {

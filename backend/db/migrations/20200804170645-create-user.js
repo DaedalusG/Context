@@ -25,6 +25,9 @@ module.exports = {
       profilePicUrl: {
         type: Sequelize.STRING(255),
       },
+      tokenId: {
+        type: Sequelize.STRING(36),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
