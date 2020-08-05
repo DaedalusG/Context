@@ -13,17 +13,17 @@ const email =
         .withMessage('Please provide a valid email address')
         .normalizeEmail();
 
-const name =
-    check('name')
+const username =
+    check('username')
         .not().isEmpty()
-        .withMessage('Please provide a username name');
+        .withMessage('Please provide a username');
 
 const password =
     check('password')
         .not().isEmpty()
         .withMessage('Please provide a password');
 
-router.post('/', email, password, name, asyncHandler(async function (req, res, next) {
+router.post('/', email, password, username, asyncHandler(async function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return next({ status: 422, errors: errors.array() });
@@ -40,7 +40,7 @@ router.post('/', email, password, name, asyncHandler(async function (req, res, n
 router.get('/me', authenticated, function (req, res) {
     res.json({
         email: req.user.email,
-        name: req.user.name,
+        username: req.user.username,
     });
 });
 

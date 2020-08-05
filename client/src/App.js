@@ -13,8 +13,8 @@ function App() {
         <li>its the end</li>
         <li>ive been defeated</li>
         <li>pray for me</li>
-        <li>I'm going to live with my mom forever now</li>
         <li>I should have stayed a mechanic, it wasn't much, but it was honest work</li>
+        <li>I'm going to live with my mom forever now</li>
       </ul>
     </>
   );
