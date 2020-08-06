@@ -3,7 +3,8 @@ import {
   BrowserRouter,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import { connect } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +16,7 @@ function App(args) {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/"><h1>Hello world!</h1></Route>
+        {(args.isSignedIn) ? <Route path="/"><h1>Hello world!</h1></Route> : <Redirect to="/login" />}
       </Switch>
       <Route path="/login"><LoginPanel /></Route>
       {/*       
