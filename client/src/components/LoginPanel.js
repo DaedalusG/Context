@@ -18,7 +18,7 @@ const LoginPanel = () => {
   const updatePassword = e => setPassword(e.target.value);
 
   if (token) {
-    return <Redirect to="/" />;
+    return <Redirect to="/" />
   }
 
   return (
