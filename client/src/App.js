@@ -4,29 +4,24 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
+  NavLink
 } from "react-router-dom";
 import { connect } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux';
+import { Navbar } from './components/Navbar'
 
 import LoginPanel from './components/LoginPanel';
 
-function App(args) {
+const App = (args) => {
   console.log('args', args)
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
-        {(args.isSignedIn) ? <Route path="/"><h1>Hello world!</h1></Route> : <Redirect to="/login" />}
+        {(args.isSignedIn) ? <Route path="/"><h1>Signed In Article Feed</h1></Route> : <Redirect to="/" />}
       </Switch>
-      <Route path="/login"><LoginPanel /></Route>
-      {/*       
-      <ul>This project has me messed up
-        <li>its the end</li>
-        <li>ive been defeated</li>
-        <li>pray for me</li>
-        <li>I should have stayed a mechanic, it wasn't much, but it was honest work</li>
-        <li>I'm going to live with my mom forever now</li>
-      </ul> */}
+      {/* <Route path="/login"><LoginPanel /></Route> */}
     </BrowserRouter>
   );
 }

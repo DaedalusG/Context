@@ -14,7 +14,6 @@ export const setToken = token => ({
 });
 
 export const loadToken = () => async dispatch => {
-    console.log("loadToken")
     const token = window.localStorage.getItem(TOKEN_KEY);
     if (token) {
         dispatch(setToken(token));
@@ -27,8 +26,6 @@ export const login = (email, password) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
     });
-
-    console.log("login", response)
 
     if (response.ok) {
         const { token } = await response.json();

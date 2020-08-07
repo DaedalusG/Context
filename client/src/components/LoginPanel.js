@@ -22,7 +22,7 @@ const LoginPanel = () => {
   }
 
   return (
-    <main className="centered middled">
+    <div className="">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -36,7 +36,7 @@ const LoginPanel = () => {
           onChange={updatePassword} />
         <button type="submit">Login</button>
       </form>
-    </main>
+    </div>
   );
 };
 
