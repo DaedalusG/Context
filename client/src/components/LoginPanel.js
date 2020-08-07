@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../actions/authentication';
 
 const LoginPanel = () => {
   const [email, setEmail] = useState('demo@example.com');
   const [password, setPassword] = useState('password');
-  const token = useSelector(state => state.authentication.token);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import App from '../App';
-import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import LoginPanel from './LoginPanel';
 
 export const Navbar = () => {
