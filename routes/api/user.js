@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
+const db = require('./../../db/models');
 
 const UserRepository = require('../../db/user-repository')
 const { authenticated, generateToken } = require('./security-utils');
@@ -23,7 +24,7 @@ const password =
         .not().isEmpty()
         .withMessage('Please provide a password');
 
-router.post('/', email, password, username, asyncHandler(async function (req, res, next) {
+router.post('/asd', email, password, username, asyncHandler(async function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return next({ status: 422, errors: errors.array() });
@@ -37,11 +38,24 @@ router.post('/', email, password, username, asyncHandler(async function (req, re
     res.json({ token, user: user.toSafeObject() });
 }));
 
-router.get('/me', authenticated, function (req, res) {
+router.get('/user', authenticated, (req, res) => {
     res.json({
         email: req.user.email,
         username: req.user.username,
     });
 });
+
+
+
+router.post('/', asyncHandler(async (req, res) => {
+    const user = await db.User.create(
+        {
+            username: 'Demo-lition',
+            email: 'demo@example.com',
+            hashedPassword: createPassword()
+        });
+    console.log(user);
+
+}));
 
 module.exports = router;

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch } from "react-router-dom";
 import { connect } from 'react-redux'
-import { Navbar } from './components/Navbar'
+import Navbar from './components/Navbar'
+import SignUpPage from './components/SignUpPage'
 import { loadToken } from './actions/authentication';
 
 const App = ({ needLogin, loadToken }) => {
@@ -18,8 +19,8 @@ const App = ({ needLogin, loadToken }) => {
 
   return (
     <BrowserRouter>
-      <Navbar />
-      <div>{(needLogin) ? <h1>UnSigned Page</h1> : <h1>Signed In</h1>}</div>
+      <Navbar needLogin={needLogin} />
+      <div>{(needLogin) ? <SignUpPage /> : <h1>Signed In</h1>}</div>
       <Switch>
       </Switch>
     </BrowserRouter>

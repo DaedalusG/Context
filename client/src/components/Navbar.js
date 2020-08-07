@@ -2,15 +2,18 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import LoginPanel from './LoginPanel';
 
-export const Navbar = () => {
+const Navbar = (props) => {
+    const { needLogin } = props
     return (
         <div className="navbar">
             <div>
                 <NavLink to="/" className="homeIcon">Context</NavLink>
             </div>
             <div className="navbar-sub">
-                <LoginPanel />
+                <LoginPanel needLogin={needLogin} />
             </div>
         </div>
     );
 }
+
+export default Navbar

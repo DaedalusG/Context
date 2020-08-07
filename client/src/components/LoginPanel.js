@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/authentication';
+import LogoutButton from './LogoutButton'
 
-const LoginPanel = () => {
+const LoginPanel = (props) => {
+  const { needLogin } = props
+
   const [email, setEmail] = useState('demo@example.com');
   const [password, setPassword] = useState('password');
   const dispatch = useDispatch();
@@ -29,7 +32,7 @@ const LoginPanel = () => {
           placeholder="Password"
           value={password}
           onChange={updatePassword} />
-        <button type="submit">Login</button>
+        {(needLogin) ? <button type="submit">Login</button> : <LogoutButton />}
       </form>
     </div>
   );
