@@ -1,41 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  NavLink
-} from "react-router-dom";
-import { connect } from 'react-redux'
-import { useSelector, useDispatch } from 'react-redux';
+import { BrowserRouter, Switch, Route, Link, Redirect, NavLink } from "react-router-dom";
+import { connect, useSelector } from 'react-redux'
 import { Navbar } from './components/Navbar'
+import { loadToken } from './actions/authentication';
 
-import LoginPanel from './components/LoginPanel';
+const App = ({ needLogin, loadToken }) => {
+  const [loaded, setLoaded] = useState(false);
 
-const App = (args) => {
-  console.log('args', args)
+  useEffect(() => {
+    setLoaded(true);
+    loadToken();
+  }, [loadToken]);
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <BrowserRouter>
       <Navbar />
+      <div>{(needLogin) ? <h1>UnSigned Page</h1> : <h1>Signed In</h1>}</div>
       <Switch>
-        {(args.isSignedIn) ? <Route path="/"><h1>Signed In Article Feed</h1></Route> : <Redirect to="/" />}
       </Switch>
       {/* <Route path="/login"><LoginPanel /></Route> */}
     </BrowserRouter>
   );
 }
+{/* {(args.isSignedIn) ? <Route path="/"><h1>Signed In Article Feed</h1></Route> : <Redirect to="/" />} */ }
 
-const mapStateToProps = (state) => {
-  console.log('mapStateToProps', state.authentication.token)
+
+const mapStateToProps = state => {
   return {
-    isSignedIn: state.authentication.token !== null && state.authentication.token !== undefined
-  }
-}
+    needLogin: !state.authentication.token,
+  };
+};
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = dispatch => {
+  return {
+    loadToken: () => dispatch(loadToken()),
+  };
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(App);
+  mapDispatchToProps,
+)(
+  App
+);
+

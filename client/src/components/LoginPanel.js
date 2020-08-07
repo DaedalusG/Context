@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { login } from '../actions/authentication';
 
 const LoginPanel = () => {
@@ -17,9 +16,6 @@ const LoginPanel = () => {
   const updateEmail = e => setEmail(e.target.value);
   const updatePassword = e => setPassword(e.target.value);
 
-  if (token) {
-    return <Redirect to="/" />
-  }
 
   return (
     <div className="">
