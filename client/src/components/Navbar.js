@@ -2,8 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import LoginPanel from './LoginPanel';
 
-const Navbar = (props) => {
-    const { needLogin } = props
+const Navbar = ({ needLogin }) => {
     return (
         <div className="navbar">
             <div>

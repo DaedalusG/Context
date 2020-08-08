@@ -1,6 +1,6 @@
 import { baseUrl } from '../config';
 
-const TOKEN_KEY = 'context/authentication/token';
+export const TOKEN_KEY = 'context/authentication/token';
 export const SET_TOKEN = 'SET_TOKEN';
 export const REMOVE_TOKEN = 'REMOVE_TOKEN';
 
