@@ -3,7 +3,7 @@ import { useDispatch, connect } from 'react-redux';
 import { login } from '../actions/authentication';
 import LogoutButton from './LogoutButton'
 
-const LoginPanel = ({ needLogin }) => {
+const LoginPanel = ({ needLogin, token }) => {
 
   const [email, setEmail] = useState('demo@example.com');
   const [password, setPassword] = useState('password');
@@ -30,7 +30,7 @@ const LoginPanel = ({ needLogin }) => {
           placeholder="Password"
           value={password}
           onChange={updatePassword} />
-        {(needLogin) ? <button type="submit">Login</button> : <LogoutButton />}
+        {(needLogin) ? <button type="submit">Login</button> : <LogoutButton token={token} />}
       </form>
     </div>
   );

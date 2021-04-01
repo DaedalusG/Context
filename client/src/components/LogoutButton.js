@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { logout } from '../actions/authentication';
 
-const LogoutButton = ({ loggedOut, logout }) => {
+const LogoutButton = ({ needLogin, logout }) => {
   const handleClick = () => logout();
 
-  if (loggedOut) {
+  if (needLogin) {
     return <Redirect to="/" />;
   }
 
@@ -17,7 +17,7 @@ const LogoutButton = ({ loggedOut, logout }) => {
 
 const mapStateToProps = state => {
   return {
-    loggedOut: !state.authentication.token,
+    needLogin: !state.authentication.token,
   };
 };
 

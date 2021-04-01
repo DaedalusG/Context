@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import Navbar from './components/Navbar'
 import SignUpPage from './components/SignUpPage'
 import { loadToken } from './actions/authentication';
+import { createUser } from './actions/signup';
+
 
 const App = ({ needLogin, loadToken }) => {
   const [loaded, setLoaded] = useState(false);
@@ -20,12 +22,14 @@ const App = ({ needLogin, loadToken }) => {
   return (
     <BrowserRouter>
       <Navbar needLogin={needLogin} />
-      <div>{(needLogin) ? <SignUpPage /> : <h1>Signed In</h1>}</div>
+      <div>{(needLogin) ? <SignUpPage createUser={createUser} /> : <h1>Signed In</h1>}</div>
       <Switch>
       </Switch>
     </BrowserRouter>
   );
 }
+
+// test test test 
 
 const mapStateToProps = state => {
   return {

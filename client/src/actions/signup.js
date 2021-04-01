@@ -20,11 +20,11 @@ export const loadToken = () => async dispatch => {
     }
 };
 
-export const login = (email, password) => async dispatch => {
-    const response = await fetch(`${baseUrl}/session`, {
-        method: 'put',
+export const createUser = (username, email, password) => async (dispatch) => {
+    const response = await fetch(`${baseUrl}/user`, {
+        method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, email, password }),
     });
 
     if (response.ok) {
@@ -32,16 +32,4 @@ export const login = (email, password) => async dispatch => {
         window.localStorage.setItem(TOKEN_KEY, token);
         dispatch(setToken(token));
     }
-};
-
-export const logout = () => async (dispatch, getState) => {
-    // const { authentication: { token } } = getState();
-    // console.log(`-----------------token: ${token}`)
-    // const response = await fetch(`${baseUrl}/session`, {
-    //     method: 'delete',
-    //     headers: { Authorization: `Bearer ${token}` },
-    // });
-    window.localStorage.removeItem(TOKEN_KEY);
-    dispatch(removeToken());
-
 };
